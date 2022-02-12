@@ -1,6 +1,6 @@
 package Classes;
 
-import Classes.Atividade;
+
 import java.util.ArrayList;
 
 
@@ -11,7 +11,7 @@ public class Disciplina {
     private String Sigla;
     private String Professor;
     private int Periodo; //semestres
-    //horario
+    //horario ainda não implementado
     private ArrayList<Atividade> Atividades;
 
     public Disciplina(String Nome, String Sigla, String Professor, int Periodo) {
@@ -40,6 +40,10 @@ public class Disciplina {
         return Periodo;
     }
 
+    /**
+     * Retorna Um arratList de todas as atividades da disciplina
+     * @return
+     */
     public ArrayList<Atividade> get_Atividades() {
         return Atividades;
     }

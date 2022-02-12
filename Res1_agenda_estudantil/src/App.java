@@ -10,19 +10,40 @@
 
 
 
-import Classes.Disciplina;
+
+import Classes.Menu;
 
 public class App {
+
+
+    //esta dando problema pois o loop não para caso o loop se repita
     public static void main(String[] args) throws Exception {
-        
-        //objeto disciplinas
-        Disciplina Matematica = new Disciplina("Matematica", "MAT", "João marcedo", 1);
+        //variaveis
+        int Seletor;
+        Boolean Usuario = true;
 
-        //adicionando atividades
-        Matematica.add_atividades("AT-01", "Pesquisar sobre numeros reais", "15/02/2022", "20/02/2022", true, 2);
-        Matematica.add_atividades("AT-02", "Pesquisar sobre numeros complexos", "15/02/2022", "20/02/2022", true, 2);
-        Matematica.add_atividades("AT-03", "Pesquisar sobre numeros ", "15/02/2022", "20/02/2022", true, 2);
+        //Ciclo Principal
+        while(Usuario == true){
 
-        Matematica.print_atividades();
+            //Menu
+            
+            Seletor = Menu.Print_menu("0 - Sair", "1 - Estudantes", "2 - Disciplina", "3 - Curso");
+            
+
+            switch(Seletor){
+                case 0:
+                    Usuario = false;
+                    break;
+
+                case 1:
+                    //estudantes
+                    System.out.println("Estudantes");
+                
+            }
+        }
     }
+
+    
+
+    
 }
