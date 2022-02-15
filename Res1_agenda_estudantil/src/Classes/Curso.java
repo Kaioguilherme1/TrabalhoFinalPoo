@@ -9,6 +9,7 @@ public class Curso {
     private String Nome;
     private String Sigla;
     private int Periodo;
+    private Map<Integer, Horario> Horarios;
     private Map<String, Disciplina> Disciplinas;
     private Map<Integer, Estudante> Alunos; 
 
@@ -29,6 +30,12 @@ public class Curso {
     //adiciona aluno
     public void add_Aluno(Estudante aluno){
         this.Alunos.put(aluno.get_Matricula(), aluno);
+    }
+    
+    //adiciona horario de disciplina
+    public void add_Horario(Disciplina disciplina, int hora, int dia, String aula){
+        int periodo = disciplina.get_Periodo();
+        // em Desenvolvimento.
     }
 
     //----Gets----

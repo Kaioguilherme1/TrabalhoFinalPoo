@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 
+
 /************************************************************
  | TITULO: Classe doguinhos                                  |
  | AUTORES: Kaio Guilherme, Lucas Anderson, Wandressa Reis   |
@@ -67,7 +68,7 @@ public class App {
 
                 case 1:
                     //estudantes
-                    System.out.println("Estudantes");
+                    break;
                 
             }
         }

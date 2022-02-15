@@ -11,7 +11,7 @@ public class Disciplina {
     private String Sigla;
     private String Professor;
     private int Periodo; //semestres
-    //horario ainda não implementado
+    private Horario horario; 
     private ArrayList<Atividade> Atividades;
 
     public Disciplina(String Nome, String Sigla, String Professor, int Periodo) {
@@ -24,6 +24,10 @@ public class Disciplina {
     }
 
     //----Gets----
+    public String[][] get_horario() {
+        return horario.get_Horario();
+    }
+    
     public String get_Nome() {
         return Nome;
     }
@@ -49,6 +53,10 @@ public class Disciplina {
     }
 
     //----sets----
+    public void set_Horario(Horario horario) {
+        this.horario = horario;
+    }
+
     public void set_professor(String nome){
         this.Professor = nome;
     }
