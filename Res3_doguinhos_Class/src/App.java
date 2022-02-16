@@ -1,3 +1,5 @@
+import Classes.Cachorro;
+
 /************************************************************
 | TITULO: Classe doguinhos                                  |
 | AUTORES: Kaio Guilherme, Lucas Anderson, Wandressa Reis   |
@@ -10,6 +12,13 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+    	//testando se esta tudo certo
+        Cachorro dog = new Cachorro("Sebastião", "Pitbull", "Feliz");
+        System.out.println(dog);
+        dog.TemDono("não");
+        dog.NovoDono("Lucas");
+        dog.Passear();
+        dog.Correr();
+        
     }
 }
