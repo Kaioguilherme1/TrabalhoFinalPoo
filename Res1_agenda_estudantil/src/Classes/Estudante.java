@@ -5,16 +5,14 @@ public class Estudante {
         //atributos
         String Nome;
         Curso Curso;
-        float Periodo;
+        int Periodo;
         Horario Horario;
         int Matricula;
 
         //construtor
-        public Estudante(String Nome, Curso Curso, float Periodo, int Matricula) {
+        public Estudante(String Nome) {
             this.Nome = Nome;
-            this.Curso = Curso;
-            this.Periodo = Periodo;
-            this.Matricula = Matricula;
+            
         }
 
         //----Gets----
@@ -44,7 +42,11 @@ public class Estudante {
             this.Curso = Curso;
         }
 
-        public void set_Periodo(float Periodo) {
+        public void set_Periodo(int Periodo) {
             this.Periodo = Periodo;
+        }
+
+        public void set_Matricula(int Matricula) {
+            this.Matricula = Matricula;
         }
 }

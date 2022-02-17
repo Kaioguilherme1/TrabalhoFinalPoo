@@ -28,7 +28,19 @@ public class Curso {
     }
 
     //adiciona aluno
-    public void add_Aluno(Estudante aluno){
+    public void matricular_Aluno(Estudante aluno, int semestre){
+        //adiciona dados do aluno
+        aluno.set_Curso(Curso.this);
+        aluno.set_Periodo(semestre);
+        aluno.set_Matricula(Alunos.size()+1);
+
+        //percorre o map das Disciplinas procurando por disciplinas do mesmo semestre
+        String[] heys = Disciplinas.keySet().toArray(new String[Disciplinas.size()]);
+        for(String key : heys){
+            if(Disciplinas.get(key).get_Periodo() == aluno.get_Periodo()){
+                Disciplinas.get(key).add_Alunos(aluno);
+            }
+        }
         this.Alunos.put(aluno.get_Matricula(), aluno);
     }
 
@@ -38,10 +50,10 @@ public class Curso {
         int Semestres = disciplina.get_Periodo();
         if(this.Horarios.containsKey(Semestres)){
             //cria novo horario caso não exista no hashmap
-            this.Horarios.get(Semestres).add_aula(hora, dia, aula);
+            this.Horarios.get(Semestres).add_aula(hora, dia, disciplina.get_Sigla());
         }else{
             Horario horario = new Horario();
-            horario.add_aula(hora, dia, aula);
+            horario.add_aula(hora, dia, disciplina.get_Sigla());
             this.Horarios.put(Semestres, horario);
         }
     }
@@ -92,23 +104,31 @@ public class Curso {
     }
 
     public void Print_curso(){
-        System.out.printf("nome\n", this.Nome);
-        System.out.printf("Sigla\n", this.Sigla);
-        System.out.printf("N° De Semetres\n", this.Semestres);
-        System.out.printf("N° De Disciplinas\n", this.Disciplinas.size());
-        System.out.printf("N° De Alunos cadastrados\n", this.Alunos.size());
+        System.out.printf("nome %s\n", this.Nome);
+        System.out.printf("Sigla %s\n", this.Sigla);
+        System.out.printf("N° De Semetres %d\n", this.Semestres);
+        System.out.printf("N° De Disciplinas %d\n", this.Disciplinas.size());
+        System.out.printf("N° De Alunos cadastrados %d\n", this.Alunos.size());
 
     }
 
     public void Print_Disciplinas(){
+        System.out.printf("N° de Disciplinas Cadastradas %s\n", this.Disciplinas.size());
+        System.out.printf("Disciplinas:\n");
+        System.out.printf("=======================\n");
         for(Map.Entry<String, Disciplina> entry : this.Disciplinas.entrySet()){
-            System.out.printf("%s\n", entry.getValue().get_Nome());
+            System.out.printf("| %s\t | \n ", entry.getValue().get_Nome());
         }
+        System.out.printf("=======================\n");
     }
 
     public void Print_alunos(){
+        System.out.printf("N° De Alunos cadastrados\n", this.Alunos.size());
+        System.out.printf("=======================\n");
+        System.out.printf("Matricula\tNome\n");
         for(Map.Entry<Integer, Estudante> entry : this.Alunos.entrySet()){
-            System.out.printf("%s\n", entry.getValue().get_Nome());
+            System.out.printf("| %d \t| %s |\n", entry.getValue().get_Nome(), entry.getValue().get_Matricula());
         }
+        System.out.printf("=======================\n");
     }
 }   

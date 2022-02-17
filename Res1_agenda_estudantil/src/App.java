@@ -3,8 +3,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Classes.Estudante;
+//import Classes.Atividade;
 import Classes.Curso;
 import Classes.Disciplina;
+//import Classes.Horario;
+
 
 
 /************************************************************
@@ -22,15 +26,16 @@ public class App {
     /**
      * Função que crita o menu e retorna a opção escolhida
      * @param Ler objeto Scanner
+     * @param Titulo String
      * @param opcoes Opções do menu separadas por virgula, obs sem limite de quantidade
      * @return int opção escolhida
      */
 
-    public static int Print_menu(Scanner Ler,String... opcoes) { //o nome dessa passagem e vararg, para passagem dinamica de parametros
+    public static int Print_menu(Scanner Ler,String Titulo, String... opcoes) { //o nome dessa passagem e vararg, para passagem dinamica de parametros
         int seletor;
 
         System.out.println("=================================");
-        System.out.println("      Selecione uma opção:");
+        System.out.println("| "+Titulo+" |");
         for (String op : opcoes) {
             System.out.println(op);
         }
@@ -50,6 +55,12 @@ public class App {
         return seletor;
     }  
     
+    public static void pause(Scanner Ler){
+        System.out.print("\nPressione ENTER para continuar...");
+        Ler.nextLine();
+        Ler.nextLine();
+        
+    }
     public static void main(String[] args) throws Exception {
         //variaveis
         int Seletor;
@@ -65,6 +76,12 @@ public class App {
         Curso curso2 = new Curso("Engenharia de Software", "ES", 8);
         Curso curso3 = new Curso("Engenharia Civil", "EC", 8);
         Curso curso4 = new Curso("Engenharia Eletrica", "EE", 8);
+        //adiciona cursos ao map
+        Cursos.put(curso.get_Sigla(), curso);
+        Cursos.put(curso2.get_Sigla(), curso2);
+        Cursos.put(curso3.get_Sigla(), curso3);
+        Cursos.put(curso4.get_Sigla(), curso4);
+
         //Disciplinas
         //Algoritimo
         Disciplina Disciplina01 = new Disciplina("Algoritimo", "ALG", "Alberto", 1);
@@ -116,7 +133,14 @@ public class App {
         curso4.add_Disciplina(Disciplina03);
         curso4.add_Disciplina(Disciplina04);
 
-        
+        //criando Alunos
+        Estudante alunos = new Estudante("jose bezzera da cunha");
+        Estudante alunos2 = new Estudante("jorge amado de sousa");
+        Estudante alunos3 = new Estudante("maria da silva");
+        Estudante alunos4 = new Estudante("lia pereira ferreira");
+        Estudante alunos5 = new Estudante("cabral armando lopes");
+        Estudante alunos6 = new Estudante("vladimir kuralov duartes");
+        Estudante alunos7 = new Estudante("joão pedro da silva");
 
 
         //Adicionando objetos no map
@@ -125,6 +149,16 @@ public class App {
         Cursos.put(curso3.get_Nome(), curso3);
         Cursos.put(curso4.get_Nome(), curso4);
         
+        //Matriculando alunos alunoCurso
+        curso.matricular_Aluno(alunos,1);
+        curso.matricular_Aluno(alunos2,2);
+        curso.matricular_Aluno(alunos3,2);
+        curso.matricular_Aluno(alunos4,2);
+        curso.matricular_Aluno(alunos6,1);
+        curso.matricular_Aluno(alunos7,1);
+
+        curso2.matricular_Aluno(alunos4,2);
+        curso2.matricular_Aluno(alunos5,1);
 
 
         //Ciclo Principal
@@ -132,7 +166,8 @@ public class App {
 
             //Menu
             
-            Seletor = Print_menu(Ler,"0 - Sair", 
+            Seletor = Print_menu(Ler,"Selecione o que deseja imprimir",
+                                     "0 - Sair", 
                                      "1 - Estudantes", 
                                      "2 - Disciplina", 
                                      "3 - Curso");
@@ -144,9 +179,67 @@ public class App {
                     continue;
                 case 0:
                     Usuario = false;
-                    
                 
+                case 3:
+                    Curso curso_selecionado = null;
+                    Seletor = Print_menu(Ler,"Selecione o seu curso",
+                                     "0 - Voltar", 
+                                     "1 - Ciência da Computação", 
+                                     "2 - Engenharia de Software", 
+                                     "3 - Engenharia Civil",
+                                     "4 - Engenharia Eletrica");
+                    
+                    switch(Seletor){
+                        case 0:
+                            break;
+                        case 1:
+                            curso_selecionado = curso;
+                            break;
+                        case 2:
+                            curso_selecionado = curso2;
+                            break;
+                        case 3:
+                            curso_selecionado = curso3;
+                            break;
+                        case 4:
+                            curso_selecionado = curso4;
+                            break;    
+                        default:
+                            System.out.println("Digite um valor Valido");
+                            continue;
+                    }
+                    System.out.printf(curso_selecionado.get_Nome() + "\n");
+                    Seletor = Print_menu(Ler,"Selecione o que deseja imprimir",
+                                     "0 - Voltar", 
+                                     "1 - Disciplinas", 
+                                     "2 - Alunos", 
+                                     "3 - Informações do curso");
+                    switch(Seletor){
+                        case 0:
+                            break;
+                        case 1:
+                            curso_selecionado.Print_Disciplinas();
+                            pause(Ler);
+                            break;
+                        case 2:
+                            curso_selecionado.Print_alunos();
+                            pause(Ler);
+                            break;
+                        case 3:
+                            curso_selecionado.Print_curso();
+                            pause(Ler);
+                            break;
+                        default:
+                            System.out.println("Digite um valor Valido");
+                            continue;
+                    }
+
+                    
+                default:
+                    System.out.println("Digite um valor Valido");
+                    continue;
             }
+
         }
     }
 
