@@ -57,7 +57,12 @@ public class Horario {
      * @param nome da aula
      */
     public void add_aula(int hora, int dia, String nome) {
-        this.horario[hora][dia] = nome;
+        if(is_empty(hora, dia)){
+            this.horario[hora][dia] = nome;
+        }else{
+            System.out.println("horario já prenchido");
+        }
+        
     }
 
     public void print_horario(Horario horario) {

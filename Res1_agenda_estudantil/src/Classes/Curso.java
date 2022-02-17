@@ -8,16 +8,16 @@ public class Curso {
     //atributos
     private String Nome;
     private String Sigla;
-    private int Periodo;
+    private int Semestres;
     private Map<Integer, Horario> Horarios;
     private Map<String, Disciplina> Disciplinas;
     private Map<Integer, Estudante> Alunos; 
 
     //construtor
-    public Curso(String Nome, String Sigla, int Periodo) {
+    public Curso(String Nome, String Sigla, int Semestres) {
         this.Nome = Nome;
         this.Sigla = Sigla;
-        this.Periodo = Periodo;
+        this.Semestres = Semestres;
         this.Disciplinas = new HashMap<String, Disciplina>();
         this.Alunos = new HashMap<Integer,Estudante>();
     }
@@ -35,8 +35,15 @@ public class Curso {
 
     //adiciona horario de disciplina
     public void add_Horario(Disciplina disciplina, int hora, int dia, String aula){
-        int periodo = disciplina.get_Periodo();
-        //em desenvolvimento
+        int Semestres = disciplina.get_Periodo();
+        if(this.Horarios.containsKey(Semestres)){
+            //cria novo horario caso não exista no hashmap
+            this.Horarios.get(Semestres).add_aula(hora, dia, aula);
+        }else{
+            Horario horario = new Horario();
+            horario.add_aula(hora, dia, aula);
+            this.Horarios.put(Semestres, horario);
+        }
     }
 
     //----Gets----
@@ -49,8 +56,8 @@ public class Curso {
         return Sigla;
     }
 
-    public int get_Periodo() {
-        return Periodo;
+    public int get_Semestres() {
+        return Semestres;
     }
 
     
@@ -81,15 +88,27 @@ public class Curso {
     //----sets----
 
     public void set_periodo(int periodo) {
-        this.Periodo = periodo;
+        this.Semestres = periodo;
     }
 
     public void Print_curso(){
         System.out.printf("nome\n", this.Nome);
         System.out.printf("Sigla\n", this.Sigla);
-        System.out.printf("N° De Semetres\n", this.Periodo);
+        System.out.printf("N° De Semetres\n", this.Semestres);
         System.out.printf("N° De Disciplinas\n", this.Disciplinas.size());
         System.out.printf("N° De Alunos cadastrados\n", this.Alunos.size());
 
+    }
+
+    public void Print_Disciplinas(){
+        for(Map.Entry<String, Disciplina> entry : this.Disciplinas.entrySet()){
+            System.out.printf("%s\n", entry.getValue().get_Nome());
+        }
+    }
+
+    public void Print_alunos(){
+        for(Map.Entry<Integer, Estudante> entry : this.Alunos.entrySet()){
+            System.out.printf("%s\n", entry.getValue().get_Nome());
+        }
     }
 }   

@@ -3,7 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import Classes.*;
+import Classes.Curso;
+import Classes.Disciplina;
 
 
 /************************************************************
@@ -58,6 +59,74 @@ public class App {
 
         Scanner Ler = new Scanner(System.in);
 
+        //Criação de objetos
+        //Cursos
+        Curso curso = new Curso("Ciência da Computação", "CC", 8);
+        Curso curso2 = new Curso("Engenharia de Software", "ES", 8);
+        Curso curso3 = new Curso("Engenharia Civil", "EC", 8);
+        Curso curso4 = new Curso("Engenharia Eletrica", "EE", 8);
+        //Disciplinas
+        //Algoritimo
+        Disciplina Disciplina01 = new Disciplina("Algoritimo", "ALG", "Alberto", 1);
+        //Banco De dados
+        Disciplina Disciplina02 = new Disciplina("Banco de Dados", "BD", "Bruno", 4);
+        //Eletrica basica
+        Disciplina Disciplina03 = new Disciplina("Eletrica basica", "EB", "Carlos", 1);
+        //Pré-calculo
+        Disciplina Disciplina04 = new Disciplina("Pré-Calculo", "PC", "Jorge", 1);
+        //Programação
+        Disciplina Disciplina05 = new Disciplina("Programação", "PRG", "João", 2);
+        //Sistemas Operacionais
+        Disciplina Disciplina06 = new Disciplina("Sistemas Operacionais", "SO", "Pedro", 4);
+        //calculo I
+        Disciplina Disciplina07 = new Disciplina("Calculo I", "CI", "Paulo", 2);
+        //calculo II
+        Disciplina Disciplina08 = new Disciplina("Calculo II", "CII", "Paulo", 3);
+        //calculo III
+        Disciplina Disciplina09 = new Disciplina("Calculo III", "CIII", "Paulo", 4);
+        //Programação Estruturada
+        Disciplina Disciplina10 = new Disciplina("Programação Estruturada", "PE", "José", 5);
+
+        //Adicionando disciplinas ao curso
+        curso.add_Disciplina(Disciplina01);
+        curso.add_Disciplina(Disciplina02);
+        curso.add_Disciplina(Disciplina03);
+        curso.add_Disciplina(Disciplina04);
+        curso.add_Disciplina(Disciplina05);
+        curso.add_Disciplina(Disciplina06);
+        curso.add_Disciplina(Disciplina07);
+        curso.add_Disciplina(Disciplina08);
+        curso.add_Disciplina(Disciplina09);
+        curso.add_Disciplina(Disciplina10);
+
+        //Adicionando disciplinas ao curso2
+        curso2.add_Disciplina(Disciplina01);  
+        curso2.add_Disciplina(Disciplina02);
+        curso2.add_Disciplina(Disciplina05);
+        curso2.add_Disciplina(Disciplina06);
+        curso2.add_Disciplina(Disciplina10);
+
+        //Adicionando disciplinas ao curso3
+        curso3.add_Disciplina(Disciplina04);
+        curso3.add_Disciplina(Disciplina07);
+        curso3.add_Disciplina(Disciplina08);
+        curso3.add_Disciplina(Disciplina09);
+
+        //Adicionando disciplinas ao curso4
+        curso4.add_Disciplina(Disciplina03);
+        curso4.add_Disciplina(Disciplina04);
+
+        
+
+
+        //Adicionando objetos no map
+        Cursos.put(curso.get_Nome(), curso);
+        Cursos.put(curso2.get_Nome(), curso2);
+        Cursos.put(curso3.get_Nome(), curso3);
+        Cursos.put(curso4.get_Nome(), curso4);
+        
+
+
         //Ciclo Principal
         while(Usuario == true){
 
@@ -76,83 +145,7 @@ public class App {
                 case 0:
                     Usuario = false;
                     
-                case 1:
-                    //Estudantes
-                    Seletor = Print_menu(Ler, "0 - voltar", 
-                                              "1 - Cadastrar Aluno", 
-                                              "2 - acessar informações", 
-                                              "3 - Acessar Agenda");
-                    switch(Seletor){
-                        case 0:
-                            //voltar
-                            break;
-                        case 1:
-                            //cadastrar aluno
-                    }
-
-                case 2:
-                    //Disciplina
-                case 3:
-                    //Curso
-                    Seletor = Print_menu(Ler, "0 - voltar", 
-                                              "1 - Cadastrar Curso", 
-                                              "2 - acessar informações",
-                                              "3 - Acessar Lista De Disciplinas",
-                                              "4 - Acessar Lista De Alunos");
-                    switch (Seletor) {
-                        case 0:
-                            // voltar
-                            break;
-                        case 1:
-                            // cadastrar curso
-                            System.out.println("obs: Separe as palavras por virgula");
-                            System.out.println("Digite as informações nesta ordem: Nome ,Sigla,Semetres");
-                            String Leitura = Ler.next();
-                            String[] parametros = Leitura.split(","); // separa as palavra por virgula
-                            System.out.println(parametros[0]);
-
-                            // if(Cursos.get(parametros[0]) == null){
-                            // Curso curso = new Curso(parametros[0], parametros[1],
-                            // Integer.parseInt(parametros[2]));
-                            // Cursos.put(curso.get_Nome(), curso);
-                            // }else{
-                            // System.out.println("Este curso já esta cadastrado");
-                            // break;
-                            // }
-                            break;
-
-                            
-                        case 2:
-                            //acessar informações
-                            Seletor = Print_menu(Ler, "0 - voltar", 
-                                              "1 - Acessar Lista de Cursos", 
-                                              "2 - acessar informações do curso");
-                            switch (Seletor) {
-                                case 0:
-                                    // voltar
-                                    break;
-                                case 1:
-                                    // acessar lista de cursos
-                                    System.out.println("Lista de cursos");
-                                    for(Curso curso : Cursos.values()){
-                                        System.out.println(curso.get_Nome());
-                                    }
-                                    break;
-                                case 2:
-                                    // acessar informações do curso
-                                    System.out.println("Digite o nome do curso que deseja acessar");
-                                    String Nome = Ler.nextLine();
-                                    try{
-                                        Curso curso = Cursos.get(Nome);
-                                        curso.Print_curso();
-                                    }catch(Exception e){
-                                        System.out.println("Curso não encontrado");
-                                    }
-                                    break;
-                                    
-                            }
                 
-                        }
             }
         }
     }

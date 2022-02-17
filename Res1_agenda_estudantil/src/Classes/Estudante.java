@@ -6,7 +6,7 @@ public class Estudante {
         String Nome;
         Curso Curso;
         float Periodo;
-        //Horario : não decidi a forma como fazer, talvez uma matriz?
+        Horario Horario;
         int Matricula;
 
         //construtor

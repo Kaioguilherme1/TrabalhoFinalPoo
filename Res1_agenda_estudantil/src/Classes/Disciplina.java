@@ -13,6 +13,7 @@ public class Disciplina {
     private int Periodo; //semestres
     private Horario horario; 
     private ArrayList<Atividade> Atividades;
+    private ArrayList<Estudante> Alunos;
 
     public Disciplina(String Nome, String Sigla, String Professor, int Periodo) {
         this.Nome = Nome;
@@ -71,6 +72,11 @@ public class Disciplina {
         Atividade atividade = new Atividade(titulo, descricao, data_postagem, data_entrega, b, i);
         this.Atividades.add(atividade);
         
+    }
+
+    //add Alunos
+    public void add_Alunos(Estudante estudante){
+        this.Alunos.add(estudante);
     }
 
     //print atividades da disciplina
