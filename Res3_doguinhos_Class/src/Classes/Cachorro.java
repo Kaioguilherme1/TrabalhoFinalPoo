@@ -9,23 +9,23 @@ public class Cachorro {
     private String cao_nome;
 	private boolean dono = false;
 	private String dono_nome;
-	private Pelo pelo;
-    private Focinho focinho;
-    private String raca;
+	//private Pelo pelo;
+    //private Focinho focinho;
+    private Raca raca;
     private String sentimento;
-    private CorDoPelo cor_de_pelo;
+    //private CorDoPelo cor_de_pelo;
     private boolean saude = false;
     
     //const
     public Cachorro(String nome, String raca, String sentimento) {
 		super();
 		this.cao_nome = nome;
-		this.pelo = Pelo.CURTO;
-		this.focinho = Focinho.BRAQUICEFALICOS;
+		//this.pelo = Pelo.CURTO;
+		//this.focinho = Focinho.BRAQUICEFALICOS;
 		this.raca = raca;
 		this.sentimento = sentimento;
-		this.cor_de_pelo = CorDoPelo.CINZA;
-	}//implementar para se ter os enums no próprio construtor   
+		//this.cor_de_pelo = CorDoPelo.CINZA;
+	}//implementar para se ter os enums no prï¿½prio construtor   
 
 	@Override
 	public String toString() {
@@ -43,7 +43,7 @@ public class Cachorro {
     		System.out.println("Vamos passear "+this.cao_nome+ "!");
     		return true;
     	}else {
-    		System.out.println(this.cao_nome+ " ,doguinho não tem dono :(");
+    		System.out.println(this.cao_nome+ " ,doguinho nï¿½o tem dono :(");
     		System.out.println(dono);
     		return false;
     	}
@@ -51,16 +51,16 @@ public class Cachorro {
     
     public boolean Correr() {
     	if(this.saude == true) {
-    		//Só testando depois implementar certo a saida
+    		//Sï¿½ testando depois implementar certo a saida
     		System.out.println("Doguinho correndo livremente");
     		return true;
     	}else {
-    		System.out.println("Doguinho precisa de cuidados médicos");
+    		System.out.println("Doguinho precisa de cuidados mï¿½dicos");
     		return false;
     	}
     }
     
-    //definir se o cão tem dono ou não
+    //definir se o cï¿½o tem dono ou nï¿½o
     public boolean TemDono(String entrada_dono) {
     	if(entrada_dono == "sim") {
     		System.out.println("Digite qual o nome do dono.");
@@ -68,10 +68,10 @@ public class Cachorro {
     		//this.nome_dono = <entrada do scanner>
     		this.dono = true;
     		return true;
-    	}else if(entrada_dono == "não"){
+    	}else if(entrada_dono == "nï¿½o"){
     		return false;
     	}else {
-    		System.out.println("Digite sim/não!");
+    		System.out.println("Digite sim/nï¿½o!");
     		return false;
     	}
     }
@@ -82,7 +82,7 @@ public class Cachorro {
     	}else {
     		this.dono_nome = novo_dono;
     		this.dono = true;
-    		System.out.println("Parabéns "+this.dono_nome +", você é o primeiro dono do(a) "+this.cao_nome);
+    		System.out.println("Parabï¿½ns "+this.dono_nome +", vocï¿½ ï¿½ o primeiro dono do(a) "+this.cao_nome);
     	}
     }
     

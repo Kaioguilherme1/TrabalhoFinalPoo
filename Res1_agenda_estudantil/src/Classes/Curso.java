@@ -31,11 +31,12 @@ public class Curso {
     public void add_Aluno(Estudante aluno){
         this.Alunos.put(aluno.get_Matricula(), aluno);
     }
-    
+
+
     //adiciona horario de disciplina
     public void add_Horario(Disciplina disciplina, int hora, int dia, String aula){
         int periodo = disciplina.get_Periodo();
-        // em Desenvolvimento.
+        //em desenvolvimento
     }
 
     //----Gets----
@@ -81,5 +82,14 @@ public class Curso {
 
     public void set_periodo(int periodo) {
         this.Periodo = periodo;
+    }
+
+    public void Print_curso(){
+        System.out.printf("nome\n", this.Nome);
+        System.out.printf("Sigla\n", this.Sigla);
+        System.out.printf("N° De Semetres\n", this.Periodo);
+        System.out.printf("N° De Disciplinas\n", this.Disciplinas.size());
+        System.out.printf("N° De Alunos cadastrados\n", this.Alunos.size());
+
     }
 }   

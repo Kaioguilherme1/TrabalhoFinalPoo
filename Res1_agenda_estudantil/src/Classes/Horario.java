@@ -34,6 +34,14 @@ public class Horario {
         return horario;
     }
 
+    public boolean is_empty(int hora, int dia){
+        String aula = this.horario[hora][dia];
+        if(aula == "Livre"){
+            return true;
+        }
+            return false;
+    }
+
     
 
     //----sets----
