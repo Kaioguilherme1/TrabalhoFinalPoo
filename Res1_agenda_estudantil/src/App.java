@@ -85,10 +85,12 @@ public class App {
         //Disciplinas
         //Algoritimo
         Disciplina Disciplina01 = new Disciplina("Algoritimo", "ALG", "Alberto", 1);
+        Disciplina01.add_atividades("Exercicio 01", "fazer o algoritimo que execute fibonacci", "21/03/22", "25/03/22", false, 2);
         //Banco De dados
         Disciplina Disciplina02 = new Disciplina("Banco de Dados", "BD", "Bruno", 4);
         //Eletrica basica
         Disciplina Disciplina03 = new Disciplina("Eletrica basica", "EB", "Carlos", 1);
+        Disciplina03.add_atividades("Exercicio 04", "Pesquisa sobre o circuito flipflop", "21/03/22", "25/03/22", false, 4);
         //Pré-calculo
         Disciplina Disciplina04 = new Disciplina("Pré-Calculo", "PC", "Jorge", 1);
         //Programação
@@ -218,7 +220,7 @@ public class App {
                         case 0:
                             break;
                         case 1:
-                            curso_selecionado.Print_Disciplinas();
+                            curso_selecionado.Print_all_Disciplinas();
                             pause(Ler);
                             break;
                         case 2:

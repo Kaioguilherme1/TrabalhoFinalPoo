@@ -24,7 +24,7 @@ public class Estudante {
             return Curso;
         }
 
-        public float get_Periodo() {
+        public int get_Periodo() {
             return Periodo;
         }
 

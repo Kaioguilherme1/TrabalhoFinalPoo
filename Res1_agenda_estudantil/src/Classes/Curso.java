@@ -1,5 +1,6 @@
 package Classes;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,10 +51,10 @@ public class Curso {
         int Semestres = disciplina.get_Periodo();
         if(this.Horarios.containsKey(Semestres)){
             //cria novo horario caso não exista no hashmap
-            this.Horarios.get(Semestres).add_aula(hora, dia, disciplina.get_Sigla());
+            this.Horarios.get(Semestres).add_compromiso(hora, dia, disciplina.get_Sigla());
         }else{
             Horario horario = new Horario();
-            horario.add_aula(hora, dia, disciplina.get_Sigla());
+            horario.add_compromiso(hora, dia, disciplina.get_Sigla());
             this.Horarios.put(Semestres, horario);
         }
     }
@@ -72,17 +73,23 @@ public class Curso {
         return Semestres;
     }
 
+    //retorna o horario
+    public Horario get_Horario(int semestre) {
+        return Horarios.get(semestre);
+    }
+
     
     /**
      * Retorna disciplina apartir do nomedo da disciplina
      * se quiser retornar todas as disciplinas, passe all como parametro
      */
-    public Disciplina get_Disciplina(String nome_disciplina ){
+    public Disciplina get_Simgle_Disciplina(String nome_disciplina ){
         if(nome_disciplina == "all")
             return (Disciplina) this.Disciplinas;
         else
             return this.Disciplinas.get(nome_disciplina);
     }
+   
 
     /**
      * Retorna o estudante apartir do numero de matricula
@@ -112,7 +119,7 @@ public class Curso {
 
     }
 
-    public void Print_Disciplinas(){
+    public void Print_all_Disciplinas(){
         System.out.printf("N° de Disciplinas Cadastradas %s\n", this.Disciplinas.size());
         System.out.printf("Disciplinas:\n");
         System.out.printf("=======================\n");
@@ -131,4 +138,27 @@ public class Curso {
         }
         System.out.printf("=======================\n");
     }
+
+    //imprime as atividades de determinado periodo
+    public void print_atividades(int periodo) {
+        String[] heys = Disciplinas.keySet().toArray(new String[Disciplinas.size()]);
+        for (String key : heys) {
+            if (Disciplinas.get(key).get_Periodo() == periodo) {
+                System.out.printf("Atividades de %s\n", Disciplinas.get(key).get_Nome());
+                Disciplinas.get(key).print_atividades();
+            }
+        }
+    }
+
+    //imprime as diciplinas de de acordo com o Periodo
+    public void print_disciplinas(int periodo){
+        String[] heys = Disciplinas.keySet().toArray(new String[Disciplinas.size()]);
+        System.out.printf("| Disciplina \f| Sigla \f| Professor \f|\n");
+        for (String key : heys) {
+            if (Disciplinas.get(key).get_Periodo() == periodo) {
+                System.out.printf("| %s \f| %s \f| %s \f|\n",Disciplinas.get(key).get_Nome(), Disciplinas.get(key).get_Sigla(), Disciplinas.get(key).get_Professor());
+            }
+        }
+    }
+
 }   

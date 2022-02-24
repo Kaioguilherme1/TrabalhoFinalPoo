@@ -81,8 +81,9 @@ public class Disciplina {
 
     //print atividades da disciplina
     public void print_atividades(){
+        System.out.printf("Titulo | Data De entrega | nota \n");
         for(Atividade atividade : this.Atividades){ //ele irar repetir o for para cada atividade dentro da lista de atividades
-            System.out.println(atividade.get_titulo());
+            System.out.printf("%s \t| %S \t | %ls \t|",atividade.get_titulo(),atividade.get_data_entrega(),atividade.get_nota());
         }
     }
 }

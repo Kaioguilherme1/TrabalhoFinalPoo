@@ -56,7 +56,7 @@ public class Horario {
      * @param dia valor unico do 1 ao 5
      * @param nome da aula
      */
-    public void add_aula(int hora, int dia, String nome) {
+    public void add_compromiso(int hora, int dia, String nome) {
         if(is_empty(hora, dia)){
             this.horario[hora][dia] = nome;
         }else{
@@ -65,6 +65,11 @@ public class Horario {
         
     }
 
+    public void substituir_Compromiso(int hora, int dia, String nome) {
+        this.horario[hora][dia] = nome;   
+    }
+    
+    //print horario
     public void print_horario(Horario horario) {
         for (int i = 0; i < horario.get_Horario().length; i++) {
             for (int j = 0; j < horario.get_Horario()[i].length; j++) {
