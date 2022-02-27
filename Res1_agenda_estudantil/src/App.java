@@ -4,10 +4,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Classes.Estudante;
-//import Classes.Atividade;
+import Classes.Atividade;
 import Classes.Curso;
 import Classes.Disciplina;
-//import Classes.Horario;
+import Classes.Horario;
 
 
 
@@ -69,99 +69,51 @@ public class App {
         Cursos = new HashMap<String, Curso>(); //inicialização do maps Curso
 
         Scanner Ler = new Scanner(System.in);
+        //Criação dos Alunos
+        Estudante aluno1 = new Estudante("Paulo cardoso");
+        Estudante aluno2 = new Estudante("Anderson Andrade");
+        Estudante aluno3 = new Estudante("Kaio Guilherme");
+        Estudante aluno4 = new Estudante("Wandressa Reis");
+        Estudante aluno5 = new Estudante("Lucas Anderson");
+        Estudante aluno6 = new Estudante("Joao da Silva");
+        Estudante aluno7 = new Estudante("Maria da almada");
+        Estudante aluno8 = new Estudante("Jose da sapucaia");
+        Estudante aluno9 = new Estudante("Pedro vasconselos");
+        Estudante aluno10 = new Estudante("Maria da Silva");
 
-        //Criação de objetos
-        //Cursos
-        Curso curso = new Curso("Ciência da Computação", "CC", 8);
+        //Criação de cursos
+        Curso curso = new Curso("Ciência Da Computação", "CC", 8);
         Curso curso2 = new Curso("Engenharia de Software", "ES", 8);
-        Curso curso3 = new Curso("Engenharia Civil", "EC", 8);
-        Curso curso4 = new Curso("Engenharia Eletrica", "EE", 8);
-        //adiciona cursos ao map
-        Cursos.put(curso.get_Sigla(), curso);
-        Cursos.put(curso2.get_Sigla(), curso2);
-        Cursos.put(curso3.get_Sigla(), curso3);
-        Cursos.put(curso4.get_Sigla(), curso4);
+        Curso curso3 = new Curso("Engenharia de Produção", "EP", 8);
+        Curso curso4 = new Curso("Engenharia Civil", "EP", 8);
 
-        //Disciplinas
-        //Algoritimo
-        Disciplina Disciplina01 = new Disciplina("Algoritimo", "ALG", "Alberto", 1);
-        Disciplina01.add_atividades("Exercicio 01", "fazer o algoritimo que execute fibonacci", "21/03/22", "25/03/22", false, 2);
-        //Banco De dados
-        Disciplina Disciplina02 = new Disciplina("Banco de Dados", "BD", "Bruno", 4);
-        //Eletrica basica
-        Disciplina Disciplina03 = new Disciplina("Eletrica basica", "EB", "Carlos", 1);
-        Disciplina03.add_atividades("Exercicio 04", "Pesquisa sobre o circuito flipflop", "21/03/22", "25/03/22", false, 4);
-        //Pré-calculo
-        Disciplina Disciplina04 = new Disciplina("Pré-Calculo", "PC", "Jorge", 1);
-        //Programação
-        Disciplina Disciplina05 = new Disciplina("Programação", "PRG", "João", 2);
-        //Sistemas Operacionais
-        Disciplina Disciplina06 = new Disciplina("Sistemas Operacionais", "SO", "Pedro", 4);
-        //calculo I
-        Disciplina Disciplina07 = new Disciplina("Calculo I", "CI", "Paulo", 2);
-        //calculo II
-        Disciplina Disciplina08 = new Disciplina("Calculo II", "CII", "Paulo", 3);
-        //calculo III
-        Disciplina Disciplina09 = new Disciplina("Calculo III", "CIII", "Paulo", 4);
-        //Programação Estruturada
-        Disciplina Disciplina10 = new Disciplina("Programação Estruturada", "PE", "José", 5);
+        //Discplinas do curso
+        Disciplina disciplina = new Disciplina("Algoritimo", "ALG", "Luan Cardoso", 1);
+        Disciplina disciplina2 = new Disciplina("Programação", "PO", "Lia Mendez", 1);
+        Disciplina disciplina3 = new Disciplina("Logica Proporcional", "LP", "Alberto Braga", 1);
+        Disciplina disciplina4 = new Disciplina("Estrutura de Dados", "ED", "Jorge Foncesa", 1);
+        Disciplina disciplina5 = new Disciplina("Sistemas Operacionais", "SO", "Luana", 1);
 
-        //Adicionando disciplinas ao curso
-        curso.add_Disciplina(Disciplina01);
-        curso.add_Disciplina(Disciplina02);
-        curso.add_Disciplina(Disciplina03);
-        curso.add_Disciplina(Disciplina04);
-        curso.add_Disciplina(Disciplina05);
-        curso.add_Disciplina(Disciplina06);
-        curso.add_Disciplina(Disciplina07);
-        curso.add_Disciplina(Disciplina08);
-        curso.add_Disciplina(Disciplina09);
-        curso.add_Disciplina(Disciplina10);
+        //adicionando disciplinas ao curso
+        curso.add_Disciplina(disciplina);
+        curso.add_Disciplina(disciplina2);
+        curso.add_Disciplina(disciplina3);
+        curso.add_Disciplina(disciplina4);
+        curso.add_Disciplina(disciplina5);
 
-        //Adicionando disciplinas ao curso2
-        curso2.add_Disciplina(Disciplina01);  
-        curso2.add_Disciplina(Disciplina02);
-        curso2.add_Disciplina(Disciplina05);
-        curso2.add_Disciplina(Disciplina06);
-        curso2.add_Disciplina(Disciplina10);
-
-        //Adicionando disciplinas ao curso3
-        curso3.add_Disciplina(Disciplina04);
-        curso3.add_Disciplina(Disciplina07);
-        curso3.add_Disciplina(Disciplina08);
-        curso3.add_Disciplina(Disciplina09);
-
-        //Adicionando disciplinas ao curso4
-        curso4.add_Disciplina(Disciplina03);
-        curso4.add_Disciplina(Disciplina04);
-
-        //criando Alunos
-        Estudante alunos = new Estudante("jose bezzera da cunha");
-        Estudante alunos2 = new Estudante("jorge amado de sousa");
-        Estudante alunos3 = new Estudante("maria da silva");
-        Estudante alunos4 = new Estudante("lia pereira ferreira");
-        Estudante alunos5 = new Estudante("cabral armando lopes");
-        Estudante alunos6 = new Estudante("vladimir kuralov duartes");
-        Estudante alunos7 = new Estudante("joão pedro da silva");
-
-
-        //Adicionando objetos no map
-        Cursos.put(curso.get_Nome(), curso);
-        Cursos.put(curso2.get_Nome(), curso2);
-        Cursos.put(curso3.get_Nome(), curso3);
-        Cursos.put(curso4.get_Nome(), curso4);
+        //adicionando alunos ao curso
+        curso.matricular_Aluno(aluno1, 1);
+        curso.matricular_Aluno(aluno2, 1);
+        curso.matricular_Aluno(aluno3, 1);
+        curso.matricular_Aluno(aluno4, 1);
+        curso.matricular_Aluno(aluno5, 1);
+        curso.matricular_Aluno(aluno6, 1);
+        curso.matricular_Aluno(aluno7, 1);
+        curso.matricular_Aluno(aluno8, 1);
+        curso.matricular_Aluno(aluno9, 1);
+        curso.matricular_Aluno(aluno10, 1);
         
-        //Matriculando alunos alunoCurso
-        curso.matricular_Aluno(alunos,1);
-        curso.matricular_Aluno(alunos2,2);
-        curso.matricular_Aluno(alunos3,2);
-        curso.matricular_Aluno(alunos4,2);
-        curso.matricular_Aluno(alunos6,1);
-        curso.matricular_Aluno(alunos7,1);
-
-        curso2.matricular_Aluno(alunos4,2);
-        curso2.matricular_Aluno(alunos5,1);
-
+        
 
         //Ciclo Principal
         while(Usuario == true){

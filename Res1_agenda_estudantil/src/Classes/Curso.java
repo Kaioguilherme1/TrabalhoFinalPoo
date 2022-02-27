@@ -35,13 +35,17 @@ public class Curso {
         aluno.set_Periodo(semestre);
         aluno.set_Matricula(Alunos.size()+1);
 
-        //percorre o map das Disciplinas procurando por disciplinas do mesmo semestre
-        String[] heys = Disciplinas.keySet().toArray(new String[Disciplinas.size()]);
-        for(String key : heys){
-            if(Disciplinas.get(key).get_Periodo() == aluno.get_Periodo()){
-                Disciplinas.get(key).add_Alunos(aluno);
+        //matricula os alunos nas diciplinas
+        
+
+        for(Disciplina d : Disciplinas.values()){
+            if(d.get_Periodo() == semestre){
+                System.out.println(d.get_Nome());
             }
         }
+        
+        
+        
         this.Alunos.put(aluno.get_Matricula(), aluno);
     }
 
