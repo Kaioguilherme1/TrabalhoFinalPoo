@@ -6,7 +6,7 @@ public class Atividade {
     private String descricao;
     private String data_postagem;
     private String data_entrega;
-    private boolean status = true;
+    private boolean status = false;
     private int nota;
 
     //construtor
@@ -15,7 +15,7 @@ public class Atividade {
         this.descricao = descricao;
         this.data_postagem = data_postagem;
         this.data_entrega = data_entrega;
-        this.status = true;
+        this.status = b;
         this.nota = nota;
     }
 
@@ -38,9 +38,9 @@ public class Atividade {
 
     public String get_status() {
         if (status) {
-            return "Aberto";
+            return "Concluido";
         } else {
-            return "Fechado";
+            return "Em andamento";
         }
     }
 

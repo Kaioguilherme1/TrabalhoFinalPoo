@@ -19,6 +19,7 @@ public class Curso {
         this.Nome = Nome;
         this.Sigla = Sigla;
         this.Semestres = Semestres;
+        this.Horarios = new HashMap<Integer, Horario>();
         this.Disciplinas = new HashMap<String, Disciplina>();
         this.Alunos = new HashMap<Integer,Estudante>();
     }
@@ -36,16 +37,12 @@ public class Curso {
         aluno.set_Matricula(Alunos.size()+1);
 
         //matricula os alunos nas diciplinas
-        
 
         for(Disciplina d : Disciplinas.values()){
             if(d.get_Periodo() == semestre){
-                System.out.println(d.get_Nome());
+                d.add_Alunos(aluno);
             }
         }
-        
-        
-        
         this.Alunos.put(aluno.get_Matricula(), aluno);
     }
 
@@ -137,10 +134,13 @@ public class Curso {
         System.out.printf("N° De Alunos cadastrados\n", this.Alunos.size());
         System.out.printf("=======================\n");
         System.out.printf("Matricula\tNome\n");
-        for(Map.Entry<Integer, Estudante> entry : this.Alunos.entrySet()){
-            System.out.printf("| %d \t| %s |\n", entry.getValue().get_Nome(), entry.getValue().get_Matricula());
+
+        for(Estudante e : this.Alunos.values()){
+            System.out.printf("| %s \t| %d |\n", e.get_Nome(), e.get_Matricula());
         }
         System.out.printf("=======================\n");
+
+        
     }
 
     //imprime as atividades de determinado periodo
@@ -148,7 +148,7 @@ public class Curso {
         String[] heys = Disciplinas.keySet().toArray(new String[Disciplinas.size()]);
         for (String key : heys) {
             if (Disciplinas.get(key).get_Periodo() == periodo) {
-                System.out.printf("Atividades de %s\n", Disciplinas.get(key).get_Nome());
+                System.out.printf("\n\nAtividades de %s\n", Disciplinas.get(key).get_Nome());
                 Disciplinas.get(key).print_atividades();
             }
         }
@@ -157,10 +157,10 @@ public class Curso {
     //imprime as diciplinas de de acordo com o Periodo
     public void print_disciplinas(int periodo){
         String[] heys = Disciplinas.keySet().toArray(new String[Disciplinas.size()]);
-        System.out.printf("| Disciplina \f| Sigla \f| Professor \f|\n");
+        System.out.printf( "| %-30s | %-5s | %-30s |\n","Disciplina","Sigla","Professor");
         for (String key : heys) {
             if (Disciplinas.get(key).get_Periodo() == periodo) {
-                System.out.printf("| %s \f| %s \f| %s \f|\n",Disciplinas.get(key).get_Nome(), Disciplinas.get(key).get_Sigla(), Disciplinas.get(key).get_Professor());
+                System.out.format("| %-30s | %-5s | %-30s |\n",Disciplinas.get(key).get_Nome(), Disciplinas.get(key).get_Sigla(), Disciplinas.get(key).get_Professor());
             }
         }
     }

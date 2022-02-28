@@ -15,13 +15,27 @@ public class Agenda {
 
     //sets
     //adicionar compromiso na agenda
-    
+    public void add_Compromisso(int Hora, int dia, String nome ) {
+        if(Hora > 8){
+            System.out.println("Hora invalida");
+        }
+        else if(dia > 5){
+            System.out.println("Dia invalido");
+        }
+        else{
+            horario.add_compromiso(Hora, dia, nome);
+        }
+    }
+
 
     public void set_Curso(Curso curso) {
         this.curso = curso;
     }
 
     //gets
+    public Horario get_horario() {
+       return this.horario;
+    }
 
     public void print_disciplinas(){
         curso.print_disciplinas(aluno.get_Periodo());

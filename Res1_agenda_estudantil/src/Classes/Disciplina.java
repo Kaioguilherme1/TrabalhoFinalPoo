@@ -21,6 +21,7 @@ public class Disciplina {
         this.Professor = Professor;
         this.Periodo = Periodo; //semestres
         this.Atividades = new ArrayList<Atividade>();
+        this.Alunos = new ArrayList<Estudante>();
         
     }
 
@@ -66,7 +67,7 @@ public class Disciplina {
         this.Periodo = periodo;
     }
 
-    public void add_atividades(String titulo, String descricao, String data_postagem, String data_entrega,boolean b, int i){
+    public void add_atividade(String titulo, String descricao, String data_postagem, String data_entrega,boolean b, int i){
 
         //criar e adiciona na lista uma nova atividade
         Atividade atividade = new Atividade(titulo, descricao, data_postagem, data_entrega, b, i);
@@ -81,9 +82,11 @@ public class Disciplina {
 
     //print atividades da disciplina
     public void print_atividades(){
-        System.out.printf("Titulo | Data De entrega | nota \n");
         for(Atividade atividade : this.Atividades){ //ele irar repetir o for para cada atividade dentro da lista de atividades
-            System.out.printf("%s \t| %S \t | %ls \t|",atividade.get_titulo(),atividade.get_data_entrega(),atividade.get_nota());
+            System.out.printf("\n Nome: %s \n Descrição %S  \n Data De Postagem: %s \n Data De Entrega: %s \n Nota %d \n Entregue: %s\n",atividade.get_titulo(), atividade.get_descricao(),atividade.get_data_postagem(), atividade.get_data_entrega(),atividade.get_nota(), atividade.get_status());
         }
     }
+
+    
 }
+

@@ -1,16 +1,4 @@
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
-import Classes.Estudante;
-import Classes.Atividade;
-import Classes.Curso;
-import Classes.Disciplina;
-import Classes.Horario;
-
-
-
 /************************************************************
  | TITULO: Classe doguinhos                                  |
  | AUTORES: Kaio Guilherme, Lucas Anderson, Wandressa Reis   |
@@ -20,6 +8,11 @@ import Classes.Horario;
  | INSTITUIÇÃO: Uiversidade federal De Roraima               |
  ************************************************************/
 
+import java.util.Scanner;
+import Classes.Estudante;
+import Classes.Agenda;
+import Classes.Curso;
+import Classes.Disciplina;
 
 public class App {
 
@@ -65,8 +58,6 @@ public class App {
         //variaveis
         int Seletor;
         boolean Usuario = true;
-        Map<String, Curso> Cursos;
-        Cursos = new HashMap<String, Curso>(); //inicialização do maps Curso
 
         Scanner Ler = new Scanner(System.in);
         //Criação dos Alunos
@@ -113,7 +104,43 @@ public class App {
         curso.matricular_Aluno(aluno9, 1);
         curso.matricular_Aluno(aluno10, 1);
         
-        
+
+        //registro das atividades e Horarios
+        //Algoritimo
+        disciplina.add_atividade("pesquisa for", "Pesquisar sobre o laço for", "10/10/2022", "14/10/2022", false , 2);
+        disciplina.add_atividade("trabalho calculadora", "Implementa uma cauculadora em C", "18/10/2022", "22/10/2022", false , 4);
+        disciplina.add_atividade("trabalho jogo", "Implementa uma jogo de pergunta e respostas em C", "26/10/2022", "01/11/2022", false , 4);
+        curso.add_Horario(disciplina, 1, 1, disciplina.get_Sigla());
+        curso.add_Horario(disciplina, 2, 1, disciplina.get_Sigla());
+        curso.add_Horario(disciplina, 1, 3, disciplina.get_Sigla());
+        curso.add_Horario(disciplina, 2, 3, disciplina.get_Sigla());
+
+        //Programação
+        disciplina2.add_atividade("trabalho jogo", "Implementa uma jogo de pergunta e respostas em python", "26/10/2022", "01/11/2022", false , 2);
+        disciplina2.add_atividade("trabalho calculadora", "Implementa uma cauculadora em python", "18/10/2022", "22/10/2022", false , 4);
+
+        curso.add_Horario(disciplina2, 3, 1, disciplina2.get_Sigla());
+        curso.add_Horario(disciplina2, 4, 1, disciplina2.get_Sigla());
+        curso.add_Horario(disciplina2, 3, 3, disciplina2.get_Sigla());
+        curso.add_Horario(disciplina2, 4, 3, disciplina2.get_Sigla());
+
+        //Logica Proporcional
+        curso.add_Horario(disciplina3, 1, 2, disciplina3.get_Sigla());
+        curso.add_Horario(disciplina3, 2, 2, disciplina3.get_Sigla());
+        curso.add_Horario(disciplina3, 1, 4, disciplina3.get_Sigla());
+        curso.add_Horario(disciplina3, 2, 4, disciplina3.get_Sigla());
+
+        //Estrutura de Dados
+        curso.add_Horario(disciplina4, 3, 2, disciplina4.get_Sigla());
+        curso.add_Horario(disciplina4, 4, 2, disciplina4.get_Sigla());
+        curso.add_Horario(disciplina4, 3, 4, disciplina4.get_Sigla());
+        curso.add_Horario(disciplina4, 4, 4, disciplina4.get_Sigla());
+
+        //Sistemas Operacionais
+        curso.add_Horario(disciplina5, 6, 2, disciplina5.get_Sigla());
+        curso.add_Horario(disciplina5, 7, 2, disciplina5.get_Sigla());
+        curso.add_Horario(disciplina5, 6, 4, disciplina5.get_Sigla());
+        curso.add_Horario(disciplina5, 7, 4, disciplina5.get_Sigla());
 
         //Ciclo Principal
         while(Usuario == true){
@@ -123,8 +150,7 @@ public class App {
             Seletor = Print_menu(Ler,"Selecione o que deseja imprimir",
                                      "0 - Sair", 
                                      "1 - Estudantes", 
-                                     "2 - Disciplina", 
-                                     "3 - Curso");
+                                     "2 - Cursos");
             
 
             switch(Seletor){
@@ -133,8 +159,110 @@ public class App {
                     continue;
                 case 0:
                     Usuario = false;
-                
-                case 3:
+                case 1://aluno
+                    System.out.println("   Paulo Cardoso   ");
+                    Seletor = Print_menu(Ler,"Selecione o que deseja acessar",
+                                     "0 - voltar", 
+                                     "1 - Agenda", 
+                                     "2 - Atividades", 
+                                     "3 - perfil");
+                    
+                    switch(Seletor){
+                        case 0:
+                            break;
+                        case 1://agenda
+                            while(Seletor != 0){
+                                System.out.print("\033[H\033[2J");
+                                System.out.println("                           Agenda   \n");
+                                Agenda agenda = new Agenda(aluno1);
+                                agenda.print_horario();
+                                int hora, dia;
+                                String nome;
+
+                                Seletor = Print_menu(Ler,"Selecione o que deseja acessar",
+                                        "0 - voltar", 
+                                        "1 - adicionar compromisso", 
+                                        "2 - remover compromisso");
+                                switch(Seletor){
+                                    case 0:
+                                        continue;
+                                    case 1:
+                                        agenda.print_horario();
+
+                                        try {
+                                            System.out.println("Digite a hora do dia");
+                                            hora = Ler.nextInt();
+                                            System.out.println("Digite o dia da semana");
+                                            dia = Ler.nextInt();
+                                            if(!agenda.get_horario().is_empty(hora, dia)){
+                                                System.out.println("Horaio ja ocupado deseja substituir Compromiso(y/n) >>>");
+                                                nome = Ler.next();
+                                                if(nome.equals("y")){
+                                                    System.out.println("Digite o nome do compromisso");
+                                                    nome = Ler.next();
+                                                    agenda.add_Compromisso(hora, dia, nome);
+                                                }
+                                            }
+                                            else{
+                                                System.out.println("Digite o nome do compromisso");
+                                                nome = Ler.next();
+                                                agenda.add_Compromisso(hora, dia, nome);
+                                            }
+                                        }catch(Exception e){
+                                            System.out.println("Digite um valor valido");
+                                            continue;
+                                        }
+                                        break;
+                                    case 2:
+                                        agenda.print_horario();
+
+                                        try {
+                                            System.out.println("Removendo Compromisso");
+                                            System.out.print("Digite a hora do dia >>> ");
+                                            hora = Ler.nextInt();
+                                            System.out.print("Digite o dia da semana >>> ");
+                                            dia = Ler.nextInt();
+                                            if (!agenda.get_horario().is_empty(hora, dia)) {
+                                                System.out.printf("Deseja Remover Compromisso %s (y/n) >>> ", agenda.get_horario().get_compromisso(hora, dia));
+                                                nome = Ler.next();
+                                                if (nome.equals("y")) {
+                                                    agenda.add_Compromisso(hora, dia, "");
+                                                }
+                                            } else {
+                                                System.out.println("Compromisso Não Existente");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Digite um valor valido");
+                                            continue;
+                                        }
+                                        break;
+                                }
+                            }
+
+                        case 2://atividades
+                            aluno1.get_Curso().print_atividades(aluno1.get_Periodo());
+                            pause(Ler);
+                            System.out.print("\033[H\033[2J");
+                            continue;
+
+                        case 3:
+                            System.out.printf("Nome: %s\n", aluno1.get_Nome());
+                            System.out.printf("Matricula: %d\n", aluno1.get_Matricula());
+                            System.out.printf("Periodo: %d\n", aluno1.get_Periodo());
+                            System.out.printf("Curso: %s\n", aluno1.get_Curso().get_Nome());
+                            System.out.printf("Disciplinas que esta matriculado\n");
+                            aluno1.get_Curso().print_disciplinas(aluno1.get_Matricula());
+                            pause(Ler);
+                            System.out.print("\033[H\033[2J");
+                            continue;
+                    }
+
+
+
+
+
+
+                case 2:
                     Curso curso_selecionado = null;
                     Seletor = Print_menu(Ler,"Selecione o seu curso",
                                      "0 - Voltar", 

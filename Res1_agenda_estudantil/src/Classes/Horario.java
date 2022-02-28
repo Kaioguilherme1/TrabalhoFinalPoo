@@ -24,7 +24,7 @@ public class Horario {
         horario[8][0] = "15:00";
         for (int i = 1; i < this.horario.length; i++) {
             for (int j = 1; j < this.horario[i].length; j++) {
-                horario[i][j] = "Livre";
+                horario[i][j] = "";
             }
             System.out.println("");
         }
@@ -34,9 +34,13 @@ public class Horario {
         return horario;
     }
 
+    public String get_compromisso(int data, int hora) {
+        return horario[data][hora];
+    }
+
     public boolean is_empty(int hora, int dia){
         String aula = this.horario[hora][dia];
-        if(aula == "Livre"){
+        if(aula == ""){
             return true;
         }
             return false;
@@ -57,11 +61,7 @@ public class Horario {
      * @param nome da aula
      */
     public void add_compromiso(int hora, int dia, String nome) {
-        if(is_empty(hora, dia)){
             this.horario[hora][dia] = nome;
-        }else{
-            System.out.println("horario já prenchido");
-        }
         
     }
 
@@ -71,11 +71,13 @@ public class Horario {
     
     //print horario
     public void print_horario(Horario horario) {
-        for (int i = 0; i < horario.get_Horario().length; i++) {
-            for (int j = 0; j < horario.get_Horario()[i].length; j++) {
-                System.out.print(horario.get_Horario()[i][j] + " |");
+        System.out.printf("  | %-8d| %-8d| %-8d| %-8d| %-8d| %-8d|\n", 0 , 1, 2, 3, 4, 5);
+        for (int i = 0; i < horario.get_Horario().length; i++) {//coluna
+            System.out.printf("%d ", i);
+            for (int j = 0; j < horario.get_Horario()[i].length; j++) {//linha
+                System.out.format("| %-8s",horario.get_Horario()[i][j]);
             }
-            System.out.println("");
+            System.out.println("|");
         }
     }
 }
