@@ -44,6 +44,10 @@ public class Atividade {
         }
     }
 
+    public boolean get_status_boolean() {
+        return status;
+    }
+
     public int get_nota() {
         return nota;
     }

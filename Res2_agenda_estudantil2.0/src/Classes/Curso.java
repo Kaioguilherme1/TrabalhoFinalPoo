@@ -26,7 +26,7 @@ public class Curso {
 
     //adiciona disciplina
     public void add_Disciplina(Disciplina disciplina){
-        this.Disciplinas.put(disciplina.get_Nome(), disciplina);
+        this.Disciplinas.put(disciplina.get_Sigla(), disciplina);
     }
 
     //adiciona aluno
@@ -84,11 +84,11 @@ public class Curso {
      * Retorna disciplina apartir do nomedo da disciplina
      * se quiser retornar todas as disciplinas, passe all como parametro
      */
-    public Disciplina get_Simgle_Disciplina(String nome_disciplina ){
-        if(nome_disciplina == "all")
+    public Disciplina get_Single_Disciplina(String sigla_disciplina ){
+        if(sigla_disciplina == "all")
             return (Disciplina) this.Disciplinas;
         else
-            return this.Disciplinas.get(nome_disciplina);
+            return this.Disciplinas.get(sigla_disciplina);
     }
    
 

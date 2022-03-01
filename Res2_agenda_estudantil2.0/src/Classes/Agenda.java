@@ -49,4 +49,23 @@ public class Agenda {
         this.horario.print_horario(horario);
     }
     
+    public int soma_notas(String sigla_disciplina) {
+        int soma = 0;
+        Disciplina d = curso.get_Single_Disciplina(sigla_disciplina);
+        for(Atividade a : d.get_Atividades()){
+            if(a.get_status_boolean()){
+                soma = soma + a.get_nota();
+            }
+        }
+        return soma;
+    }
+
+    public float get_media(int soma, int num_atividades) {
+        if(soma == 0 && num_atividades == 0){
+            return 0;
+        }
+        else{
+            return (float) soma/num_atividades;
+        }
+    }
 }
