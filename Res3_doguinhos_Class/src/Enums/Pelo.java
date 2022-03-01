@@ -2,7 +2,8 @@ package Enums;
 
 public enum Pelo {
 	LONGO("longo"),
-	CURTO("curto");
+	CURTO("curto"),
+	MEDIO("medio");
 	
 	private String pelo;
 	
