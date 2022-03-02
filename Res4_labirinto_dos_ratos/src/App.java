@@ -1,5 +1,5 @@
-import java.util.Scanner;
 
+import Classes.Comando;
 import Classes.Mapa;
 import Classes.Rato;
 
@@ -13,6 +13,7 @@ import Classes.Rato;
 ************************************************************/
 
 public class App {
+    
     public static void main(String[] args) throws Exception {
         
         boolean venceu = false;
@@ -21,8 +22,10 @@ public class App {
         mapa.add_Entrada(0, 1);
         mapa.add_Saida(8, 26);
 
-        Rato rato = new Rato(1,1,'K',mapa);
-        Scanner Ler = new Scanner(System.in);
+        Rato rato = new Rato(4,1,'K',mapa);
+        Comando rato1 = new Comando(rato);
+
+        //Scanner Ler = new Scanner(System.in);
         //desenhando mapa
         //linha 1
         mapa.set_mapa(1, 2, '*');
@@ -55,19 +58,22 @@ public class App {
 
 
         mapa.print_mapa();
+        
+        Thread t = new Thread(rato1);
+        t.start();
 
-        do{    
-            System.out.println("Digite o comando: ");
-            System.out.println("  5  ");
-            System.out.println("1 2 3 ");
-            System.out.print(">>> ");
-            int c = Ler.nextInt();
-            rato.mover(c);
-            if(rato.get_x() - 1 == mapa.getSaida()[1] && rato.get_y() - 1 == mapa.getSaida()[0] ){
-                venceu = true;
-                System.out.println("Você venceu!");
-            }
-        }while(venceu == false);
+        // do{    
+        //     System.out.println("Digite o comando: ");
+        //     System.out.println("  5  ");
+        //     System.out.println("1 2 3 ");
+        //     System.out.print(">>> ");
+        //     int c = Ler.nextInt();
+        //     rato.mover(c);
+        //     if(rato.get_x() - 1 == mapa.getSaida()[1] && rato.get_y() - 1 == mapa.getSaida()[0] ){
+        //         venceu = true;
+        //         System.out.println("Você venceu!");
+        //     }
+        // }while(venceu == false);
         
     }
 }
