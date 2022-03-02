@@ -68,6 +68,6 @@ public class App {
                 System.out.println("Você venceu!");
             }
         }while(venceu == false);
-        hkfahshfjas
+        
     }
 }

@@ -24,6 +24,13 @@ public class Rato {
         return (this.mapa.getMapa()[y][x] != '*' && this.mapa.getMapa()[y][x] != 'E') ? true : false;
     }
 
+    private void mover(int y, int x, char nome) {
+        if((y == 0 || y == 8 || x == 0 || x == 32))
+            this.mapa.add_posição(y, x, 'S');
+        else    
+            this.mapa.add_posição(y, x, nome);
+    }
+
     public int get_x(){
         return this.posiçãoX;
     }
@@ -48,7 +55,7 @@ public class Rato {
                 if (Is_free(this.posiçãoX - 1, this.posiçãoY)) {
                     this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
                     this.posiçãoX--;
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = this.nome;
+                    mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
                     return true;
                 }
@@ -57,7 +64,7 @@ public class Rato {
                 if (Is_free(this.posiçãoX, this.posiçãoY + 1)) {
                     this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
                     this.posiçãoY++;
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = this.nome;
+                    mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
                     return true;
                     
@@ -65,9 +72,10 @@ public class Rato {
                 break;
             case 3://direita
                 if (Is_free(this.posiçãoX + 1, this.posiçãoY)) {
+                    
                     this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
                     this.posiçãoX++;
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = this.nome;
+                    mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
                     return true;
                     
@@ -77,7 +85,7 @@ public class Rato {
                 if (Is_free(this.posiçãoX, this.posiçãoY - 1)) {
                     this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
                     this.posiçãoY--;
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = this.nome;
+                    mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
                     return true;
                     
@@ -88,7 +96,7 @@ public class Rato {
                 System.out.println("Comando invalido");
                 return false;
         }
-        System.out.println("Colisão com a parede");
+        //System.out.println("Colisão com a parede");
         return false;
     }
 }
