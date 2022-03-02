@@ -22,7 +22,7 @@ public class App {
         mapa.set_mapa(1, 8, '*');
         mapa.set_mapa(1, 21, '*');
         mapa.set_mapa(1, 25, '*');
-
+        
         //linha 2
         mapa.set_mapa(2, 2, '*');
         mapa.set_mapa(2, 3, '*');
