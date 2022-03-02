@@ -53,7 +53,7 @@ public class Rato {
 
             case 1://esquerda
                 if (Is_free(this.posiçãoX - 1, this.posiçãoY)) {
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
+                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '°';
                     this.posiçãoX--;
                     mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
@@ -62,7 +62,7 @@ public class Rato {
                 break;
             case 2://baixo
                 if (Is_free(this.posiçãoX, this.posiçãoY + 1)) {
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
+                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '°';
                     this.posiçãoY++;
                     mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
@@ -73,7 +73,7 @@ public class Rato {
             case 3://direita
                 if (Is_free(this.posiçãoX + 1, this.posiçãoY)) {
                     
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
+                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '°';
                     this.posiçãoX++;
                     mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();
@@ -83,7 +83,7 @@ public class Rato {
                 break;
             case 5://cima
                 if (Is_free(this.posiçãoX, this.posiçãoY - 1)) {
-                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '@';
+                    this.mapa.getMapa()[this.posiçãoY][this.posiçãoX] = '°';
                     this.posiçãoY--;
                     mover(this.posiçãoY, this.posiçãoX, this.nome);
                     this.mapa.print_mapa();

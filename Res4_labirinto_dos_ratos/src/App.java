@@ -22,8 +22,10 @@ public class App {
         mapa.add_Entrada(0, 1);
         mapa.add_Saida(8, 26);
 
-        Rato rato = new Rato(4,1,'K',mapa);
+        Rato rato = new Rato(1,1,'K',mapa);
+        Rato ratoL = new Rato(1,1,'L',mapa);
         Comando rato1 = new Comando(rato);
+        Comando rato2 = new Comando(ratoL);
 
         //Scanner Ler = new Scanner(System.in);
         //desenhando mapa
@@ -60,7 +62,9 @@ public class App {
         mapa.print_mapa();
         
         Thread t = new Thread(rato1);
+        Thread t2 = new Thread(rato2);
         t.start();
+        t2.start();
 
         // do{    
         //     System.out.println("Digite o comando: ");

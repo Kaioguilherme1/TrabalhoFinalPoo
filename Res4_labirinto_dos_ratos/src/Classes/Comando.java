@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.Random;
+
 public class Comando implements Runnable{
     //atributos
     private Rato rato;
@@ -15,16 +17,15 @@ public class Comando implements Runnable{
     }
 
     public boolean Algoritimo_Labirinto1() {
+            Random gerador = new Random();
+            this.comando = gerador.nextInt(4) + 1;
             if(!Is_saida(rato)){
                 if(this.comando == 4){
                     this.comando++;
-                    return false;
-                }else if(this.comando > 5){
-                    this.comando = 1;
+                    rato.mover(this.comando);
                     return false;
                 }else{
                     rato.mover(this.comando);
-                    this.comando++;
                     return false;
                 }
             }else{
@@ -46,6 +47,7 @@ public class Comando implements Runnable{
                 e.printStackTrace();
             }
         }
+        System.out.println("Saiu do labirinto");
         Thread.currentThread().interrupt();
     }
 }
