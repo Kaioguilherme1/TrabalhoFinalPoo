@@ -3,7 +3,8 @@ package Enums;
 public enum Pelo {
 	LONGO("longo"),
 	CURTO("curto"),
-	MEDIO("medio");
+	MEDIO("medio"),
+	DURO("duro");
 	
 	private String pelo;
 	
@@ -13,5 +14,5 @@ public enum Pelo {
 
 	public String getPelo() {
 		return pelo;
-	}	
+	}
 }

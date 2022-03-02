@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 import Enums.Focinho;
 import Enums.Pelo;
@@ -13,82 +14,100 @@ public abstract class Cachorro {
     private Pelo pelo; //tipo pelo
     private Focinho focinho;
     private String sentimento;
-    protected HashMap<Integer, String> corPelo;
+    private HashMap<Integer, String> VariacaoCor; //defini a variacao de cores para a raca
+	private String corPelo; //defini uma cor para o cao
     private boolean saude = true;
+    private String situcaoSaude;
 	
-    
-    //construtor para um cachorro que tem um dono
-    //ou seja, já tem nome
-    public Cachorro(String cao_nome) {
-		super();
-		this.cao_nome = cao_nome;
-		this.corPelo = new HashMap<Integer, String>();
-	}
-    
-    //construtor para um cachorro que não tem dono
+
+
+
+	//construtor 
     public Cachorro() {
-    	
+    	super();
+    	this.VariacaoCor = new HashMap<Integer, String>();
     }
-
-	public String toString() {
-		return  "pelo:" + pelo + ", focinho:" + focinho
-				+ ", sentimento:" + sentimento + " Cores:" + corPelo;
-		
-	}
-
-
 
 	//----metodos----
-    public boolean Passear() {
+    
+    public String toString() {
+		if(saude == true){
+			return  "Doguinho: " + cao_nome + ",  tem o pelo:" + pelo + ", focinho:" + focinho
+				+ "\nSentindo:" + sentimento + ", Cor:" + corPelo + ", Dono: "+ dono_nome;
+		}else{
+			return  "Doguinho: " + cao_nome + ",  tem o pelo:" + pelo + ", focinho:" + focinho
+				+ "\nSentindo:" + sentimento + ", Cor:" + corPelo + ", Dono: "+ dono_nome
+				+ "\nSituacao do doguinho: " + situcaoSaude;
+		}
+	}
+    
+    public void Passear() {
     	if(this.dono == true) {
     		System.out.println("Vamos passear "+this.cao_nome+ "!");
-    		return true;
     	}else {
-    		System.out.println(this.cao_nome+ " ,doguinho nao tem dono :(");
-    		System.out.println(dono);
-    		return false;
+    		System.out.println("Doguinho nao tem dono :(");
     	}
     }
     
-    public boolean Correr() {
+    public void Correr() {
     	if(this.saude == true) {
-    		//Sï¿½ testando depois implementar certo a saida
     		System.out.println("Doguinho correndo livremente");
-    		return true;
     	}else {
-    		System.out.println("Doguinho precisa de cuidados medicos");
-    		return false;
+    		System.out.println("Doguinho precisa de cuidados medicos, antes de correr");
     	}
     }
     
-    //definir se o cï¿½o tem dono ou nï¿½o
-    public boolean TemDono(String entrada_dono) {
-    	if(entrada_dono == "sim") {
-    		System.out.println("Digite qual o nome do dono.");
-    		//implementar o scanner para nome do dono
-    		//this.nome_dono = <entrada do scanner>
-    		this.dono = true;
-    		return true;
-    	}else if(entrada_dono == "não"){
-    		return false;
-    	}else {
-    		System.out.println("Digite sim/não!");
-    		return false;
-    	}
-    }
-    
-    public void NovoDono(String novo_dono) {
+    //Verificar tem dono ou nao
+    public void TemDono() {
     	if(dono == true) {
-    		this.dono_nome = novo_dono;
-    	}else {
-    		this.dono_nome = novo_dono;
-    		this.dono = true;
-    		System.out.println("Parabéns "+this.dono_nome +", você é o primeiro dono do(a) "+this.cao_nome);
+			System.out.println("O cachorro ja tem dono");
+    	}else{
+    		System.out.println("O cachorro ainda nao tem dono");
+			System.out.println("Para adotar ou dar o cachorro escolher a opcao 2");
     	}
     }
     
+	//adotar / novo dono 
+    public void NovoDono() {
+		System.out.println("Qual o nome do novo dono?");
+    	String data_in = LerDados().nextLine();
+    	if(dono == true) {
+    		this.dono_nome = data_in;
+			System.out.println("Parabens "+this.dono_nome +", voce e o novo dono do doguinho :)");
+    	}else {
+    		this.dono_nome = data_in;
+			System.out.println("Qual o nome para o doguinho escolheu?");
+    		this.cao_nome = LerDados().nextLine();
+    		this.dono = true;
+    		System.out.println("Parabens "+this.dono_nome +", voce e o primeiro dono do doguinho :)");
+    	}
+    }
+    
+    //metodo para descrever a situacao de saude do dog
+    public void SituacaoSaude() {
+    	System.out.println("O doguinho esta bem de Saude? s/n");
+    	String data_in = LerDados().nextLine();
+    	if(data_in.equals("n")) {
+    		this.saude = false;
+    		System.out.println("Descreva a situacao de saude do doguinho");
+    		this.situcaoSaude = LerDados().nextLine();
+    	}else if(data_in.equals("s")){
+    		System.out.println("Excelente!");
+    	}else{
+    		System.out.println("Digite somente s/n !");
+    	}
+    	
+    }
+    
+    //metodo para entrada de dados
+    public Scanner LerDados() {
+    	Scanner ler = new Scanner(System.in);
+    	return ler;
+    }
     
     public abstract void emitirSom();
+    
+    public abstract void cores();
     
     //-----------
     
@@ -116,14 +135,28 @@ public abstract class Cachorro {
 
 	public String getSentimento() {return sentimento;}
 
-	public void setSentimento(String sentimento) {this.sentimento = sentimento;}
+	public void setSentimento() { //definir sentimento do doguinho
+		System.out.println("Como o doguinho esta se sentindo?");
+    	String data_in = LerDados().nextLine();
+		this.sentimento = data_in;
+	}
 
-	public HashMap<Integer, String> getCorPelo() {return corPelo;}
+	public HashMap<Integer, String> getVariacaoCor() {return VariacaoCor;}
 
-	public void setCorPelo(HashMap<Integer, String> corPelo) {this.corPelo = corPelo;}
+	public void setVariacaoCor(HashMap<Integer, String> VariacaoCor) {this.VariacaoCor = VariacaoCor;}
 
 	public boolean isSaude() {return saude;}
 
 	public void setSaude(boolean saude) {this.saude = saude;}
-    
+	
+	public String getSitucaoSaude() {return situcaoSaude;}
+
+	public void setSitucaoSaude(String situcaoSaude) {this.situcaoSaude = situcaoSaude;}
+
+	public String getCorPelo() {return corPelo;}
+
+	public void setCorPelo(String corPelo) {this.corPelo = corPelo;} //
+
+	public void setCorPelo() {};
+   
 }
