@@ -16,7 +16,7 @@ public class App {
     
     public static void main(String[] args) throws Exception {
         
-        boolean venceu = false;
+        
 
         Mapa mapa = new Mapa();
         mapa.add_Entrada(0, 1);
@@ -24,8 +24,11 @@ public class App {
 
         Rato rato = new Rato(1,1,'K',mapa);
         Rato ratoL = new Rato(1,1,'L',mapa);
+        Rato ratoW = new Rato(1,1,'W',mapa);
+
         Comando rato1 = new Comando(rato);
         Comando rato2 = new Comando(ratoL);
+        Comando rato3 = new Comando(ratoW);
 
         //Scanner Ler = new Scanner(System.in);
         //desenhando mapa
@@ -60,11 +63,16 @@ public class App {
 
 
         mapa.print_mapa();
-        
-        Thread t = new Thread(rato1);
-        Thread t2 = new Thread(rato2);
-        t.start();
-        t2.start();
+        try {
+            Thread t = new Thread(rato1);
+            Thread t2 = new Thread(rato2);
+            Thread t3 = new Thread(rato3);
+            t.start();
+            t2.start();
+            t3.start();
+        } catch (Exception e) {
+            System.out.println("venceu" );
+        }
 
         // do{    
         //     System.out.println("Digite o comando: ");

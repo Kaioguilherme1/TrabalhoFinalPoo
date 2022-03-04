@@ -35,7 +35,7 @@ public class Mapa {
         
         for (int i = 1; i < 8; i++) {
             for (int j = 1; j < 32; j++) {
-                this.mapa[i][j]= '.';
+                this.mapa[i][j]= '@';
             }
             
         }
@@ -64,7 +64,7 @@ public class Mapa {
         }
     }
 
-    public void add_posição(int x, int y, char nome) {
+    public void add_posicao(int x, int y, char nome) {
         this.mapa[x][y] = nome;
     }
 
