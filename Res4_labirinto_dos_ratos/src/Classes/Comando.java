@@ -41,7 +41,7 @@ public class Comando implements Runnable{
         while(!saida){
             saida = Algoritimo_Labirinto1();
             try {
-                Thread.sleep(100);
+                Thread.sleep(600);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

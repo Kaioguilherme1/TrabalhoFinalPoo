@@ -22,11 +22,11 @@ public class App {
         mapa.add_Entrada(0, 1);
         mapa.add_Saida(8, 26);
 
-        Rato rato = new Rato(1,1,'K',mapa);
+        Rato ratok = new Rato(1,1,'K',mapa);
         Rato ratoL = new Rato(1,1,'L',mapa);
         Rato ratoW = new Rato(1,1,'W',mapa);
 
-        Comando rato1 = new Comando(rato);
+        Comando rato1 = new Comando(ratok);
         Comando rato2 = new Comando(ratoL);
         Comando rato3 = new Comando(ratoW);
 
@@ -59,7 +59,14 @@ public class App {
         mapa.set_mapa(2, 26, '*');
         mapa.set_mapa(2, 28, '*');
         mapa.set_mapa(2, 30, '*');
-
+        //linha 3
+        mapa.set_mapa(3, 8, '*');
+        mapa.set_mapa(3, 12, '*');
+        mapa.set_mapa(3, 17, '*');
+        mapa.set_mapa(3, 23, '*');
+        mapa.set_mapa(3, 28, '*');
+        mapa.set_mapa(3, 30, '*');
+        mapa.set_mapa(3, 32, '*');
 
 
         mapa.print_mapa();
@@ -74,6 +81,7 @@ public class App {
             System.out.println("venceu" );
         }
 
+        //controle manual do rato1
         // do{    
         //     System.out.println("Digite o comando: ");
         //     System.out.println("  5  ");
