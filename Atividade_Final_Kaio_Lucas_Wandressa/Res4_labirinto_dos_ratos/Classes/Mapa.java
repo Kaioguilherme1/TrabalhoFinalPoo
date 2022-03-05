@@ -99,10 +99,8 @@ public class Mapa {
         }
     }
 
-    public void print_mapa(boolean apagar_anterior) {
-        if (apagar_anterior) 
-            System.out.print("\033[H\033[2J");
-            
+    public void print_mapa() {
+        System.out.print("\033[H\033[2J");
         System.out.println("|====== Labirinto dos ratos ======|");
         for (int i = 0; i < 9; i++) {
             System.out.print("|");

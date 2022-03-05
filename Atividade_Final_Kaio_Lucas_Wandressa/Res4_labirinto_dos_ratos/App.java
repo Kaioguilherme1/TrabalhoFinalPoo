@@ -11,12 +11,12 @@ import Classes.Rato;
 | PROPOSITO:                                                |   
 | INSTITUIÇÃO: Uiversidade federal De Roraima               |
 ************************************************************/
-// tentamos fazer funcionar ate o ultimo estante
+
 public class App {
     
     public static void main(String[] args) throws Exception {
         
-        boolean fim = false;
+        
 
         Mapa mapa = new Mapa();
         mapa.add_Entrada(0, 1);
@@ -133,32 +133,17 @@ public class App {
         mapa.set_mapa(7, 29, '*');
 
 
-        mapa.print_mapa(true);
-        
-        Thread t = new Thread(rato1);
-        Thread t2 = new Thread(rato2);
-        Thread t3 = new Thread(rato3);
-        t.start();
-        t2.start();
-        t3.start();
-
-        
-        while (!fim) {
-            if(rato1.Is_saida(ratok) || rato2.Is_saida(ratoL) || rato3.Is_saida(ratoW)){
-                t.interrupt();
-                t2.interrupt();
-                t3.interrupt();
-                System.out.println("venceu");
-                ratok.print_caminho_percorrido();
-                ratoL.print_caminho_percorrido();
-                ratoW.print_caminho_percorrido();
-                fim = true;
-            }
+        mapa.print_mapa();
+        try {
+            Thread t = new Thread(rato1);
+            Thread t2 = new Thread(rato2);
+            Thread t3 = new Thread(rato3);
+            t.start();
+            t2.start();
+            t3.start();
+        } catch (Exception e) {
+            System.out.println("venceu" );
         }
-        
-        
-        
-        
 
         //controle manual do rato1
         // do{    

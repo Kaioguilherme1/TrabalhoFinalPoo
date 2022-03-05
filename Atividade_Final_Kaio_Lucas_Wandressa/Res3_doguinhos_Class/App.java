@@ -42,7 +42,8 @@ public class App {
 
     //implementacao futura: 
     //-criar uma possivel funcao para o menu de metodos ficar menos repetitivo
-    //-minimizar alguns metodos como tem dono  e novo dono
+    //-tirar o erro de algumas situações com erro de numero invalido para
+    //-minimizar alguns metodos como temdono  e novo dono
     //-generalizar a funcao setPelo em cachorro
     public static void main(String[] args) throws Exception {
     	Scanner Ler = new Scanner(System.in);

@@ -6,14 +6,13 @@ public class Comando implements Runnable{
     //atributos
     private Rato rato;
     private int comando;
-    
 
     //metodo
     public Comando(Rato rato) {
         this.rato = rato;
     }
 
-    public boolean Is_saida(Rato rato){
+    private boolean Is_saida(Rato rato){
         return (rato.get_mapa().getMapa()[rato.get_y()][rato.get_x()] == 'E') ? true : false;
     }
 
@@ -35,7 +34,6 @@ public class Comando implements Runnable{
             }
     }
 
-    
     @Override
     public void run()
     {   
@@ -43,12 +41,13 @@ public class Comando implements Runnable{
         while(!saida){
             saida = Algoritimo_Labirinto1();
             try {
-                Thread.sleep(10);
+                Thread.sleep(600);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-        ;
+        System.out.println("Saiu do labirinto");
+        Thread.currentThread().interrupt();
     }
 }

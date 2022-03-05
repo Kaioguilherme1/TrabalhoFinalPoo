@@ -1,15 +1,12 @@
 package Classes;
 
-import java.util.LinkedList;
-
 public class Rato {
     //Atributos
     private int posicaoX;
     private int posicaoY;
     private char nome;
     private Mapa mapa;
-    private  LinkedList<int[]> caminho_percorrido;
-    private Mapa mapa_caminho;
+
 
 
     
@@ -21,9 +18,6 @@ public class Rato {
         this.nome = nome;
         this.mapa = mapa;
         this.mapa.add_posicao(this.posicaoX, this.posicaoY, this.nome);
-        this.caminho_percorrido = new LinkedList<int[]>();
-        this.caminho_percorrido.add(new int[]{this.posicaoX,this.posicaoY});
-        this.mapa_caminho = new Mapa();
     }
 
     private boolean Is_free(int x, int y) {
@@ -53,17 +47,6 @@ public class Rato {
         return this.nome;
     }
 
-    public LinkedList<int[]> get_caminho_percorrido(){
-        return this.caminho_percorrido;
-    }
-
-    public void print_caminho_percorrido(){
-        for(int i = 0; i < this.caminho_percorrido.size(); i++){
-            mapa_caminho.add_posicao(this.caminho_percorrido.get(i)[0], this.caminho_percorrido.get(i)[1], this.nome);
-        }
-        System.out.println("Mapa com o caminho percorrido de  " + this.nome);
-        mapa_caminho.print_mapa(false);
-    }
 
     public boolean mover(int comando){
         switch (comando) {
@@ -73,8 +56,7 @@ public class Rato {
                     this.mapa.getMapa()[this.posicaoY][this.posicaoX] = '@';
                     this.posicaoX--;
                     mover(this.posicaoY, this.posicaoX, this.nome);
-                    this.caminho_percorrido.add(new int[]{this.posicaoY,this.posicaoX});
-                    this.mapa.print_mapa(true);
+                    this.mapa.print_mapa();
                     return true;
                 }
                 break;
@@ -83,8 +65,7 @@ public class Rato {
                     this.mapa.getMapa()[this.posicaoY][this.posicaoX] = '@';
                     this.posicaoY++;
                     mover(this.posicaoY, this.posicaoX, this.nome);
-                    this.caminho_percorrido.add(new int[]{this.posicaoY,this.posicaoX});
-                    this.mapa.print_mapa(true);
+                    this.mapa.print_mapa();
                     return true;
                     
                 }
@@ -95,8 +76,7 @@ public class Rato {
                     this.mapa.getMapa()[this.posicaoY][this.posicaoX] = '@';
                     this.posicaoX++;
                     mover(this.posicaoY, this.posicaoX, this.nome);
-                    this.caminho_percorrido.add(new int[] { this.posicaoY, this.posicaoX });
-                    this.mapa.print_mapa(true);
+                    this.mapa.print_mapa();
                     return true;
                     
                 }
@@ -106,8 +86,7 @@ public class Rato {
                     this.mapa.getMapa()[this.posicaoY][this.posicaoX] = '@';
                     this.posicaoY--;
                     mover(this.posicaoY, this.posicaoX, this.nome);
-                    this.caminho_percorrido.add(new int[] { this.posicaoY, this.posicaoX });
-                    this.mapa.print_mapa(true);
+                    this.mapa.print_mapa();
                     return true;
                     
                 }
