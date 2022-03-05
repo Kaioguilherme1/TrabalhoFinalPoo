@@ -67,6 +67,70 @@ public class App {
         mapa.set_mapa(3, 28, '*');
         mapa.set_mapa(3, 30, '*');
         mapa.set_mapa(3, 32, '*');
+        //linha 4
+        mapa.set_mapa(4, 2, '*');
+        mapa.set_mapa(4, 3, '*');
+        mapa.set_mapa(4, 4, '*');
+        mapa.set_mapa(4, 5, '*');
+        mapa.set_mapa(4, 6, '*');
+        mapa.set_mapa(4, 7, '*');
+        mapa.set_mapa(4, 8, '*');
+        mapa.set_mapa(4, 10, '*');
+        mapa.set_mapa(4, 12, '*');
+        mapa.set_mapa(4, 13, '*');
+        mapa.set_mapa(4, 14, '*');
+        mapa.set_mapa(4, 15, '*');
+        mapa.set_mapa(4, 17, '*');
+        mapa.set_mapa(4, 19, '*');
+        mapa.set_mapa(4, 20, '*');
+        mapa.set_mapa(4, 21, '*');
+        mapa.set_mapa(4, 22, '*');
+        mapa.set_mapa(4, 23, '*');
+        mapa.set_mapa(4, 24, '*');  
+        mapa.set_mapa(4, 25, '*');
+        mapa.set_mapa(4, 26, '*');
+        mapa.set_mapa(4, 27, '*');
+        mapa.set_mapa(4, 28, '*');
+        
+        //linha 5
+        mapa.set_mapa(5, 6, '*');
+        mapa.set_mapa(5, 10, '*');
+        mapa.set_mapa(5, 12, '*');
+        mapa.set_mapa(5, 20, '*');
+        mapa.set_mapa(5, 23, '*');
+        mapa.set_mapa(5, 28, '*');
+        mapa.set_mapa(5, 29, '*');
+        mapa.set_mapa(5, 30, '*');
+        //linha 6
+
+        mapa.set_mapa(6, 2, '*');
+        mapa.set_mapa(6, 3, '*');
+        mapa.set_mapa(6, 4, '*');
+        mapa.set_mapa(6, 5, '*');
+        mapa.set_mapa(6, 6, '*');
+        mapa.set_mapa(6, 8, '*');
+        mapa.set_mapa(6, 9, '*');
+        mapa.set_mapa(6, 10, '*');
+        mapa.set_mapa(6, 12, '*');
+        mapa.set_mapa(6, 14, '*');
+        mapa.set_mapa(6, 15, '*');
+        mapa.set_mapa(6, 17, '*');
+        mapa.set_mapa(6, 18, '*');
+        mapa.set_mapa(6, 22, '*');
+        mapa.set_mapa(6, 23, '*');
+        mapa.set_mapa(6, 25, '*');
+        mapa.set_mapa(6, 26, '*');
+        mapa.set_mapa(6, 29, '*');
+        mapa.set_mapa(6, 30, '*');
+
+        //linha 7
+        mapa.set_mapa(7, 8, '*');
+        mapa.set_mapa(7, 12, '*');
+        mapa.set_mapa(7, 14, '*');
+        mapa.set_mapa(7, 20, '*');
+        mapa.set_mapa(7, 25, '*');
+        mapa.set_mapa(7, 28, '*');
+        mapa.set_mapa(7, 29, '*');
 
 
         mapa.print_mapa();
